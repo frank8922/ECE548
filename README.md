@@ -4,3 +4,5 @@
 ### Bayesian Classifiers
 
 ### Nearest Neighbor Classifiers
+
+### Linear Classifiers
