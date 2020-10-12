@@ -28,7 +28,7 @@ class Perceptron:
         self.w = np.random.uniform(-1.0,1.0,X.shape[1]) #random vector of weights
         self.b = 0
 
-        accuracy = {}
+        accuracy = []
         max_accuracy = 0
 
         wt_matrix = []
@@ -44,7 +44,7 @@ class Perceptron:
                     self.b = self.b + lr * 1
 
             wt_matrix.append(self.w)    
-            accuracy[i] = accuracy_score(self.predict(X), Y)
+            accuracy.append(accuracy_score(self.predict(X), Y))
             if (accuracy[i] > max_accuracy):
                 max_accuracy = accuracy[i]
                 j = i
@@ -53,11 +53,18 @@ class Perceptron:
 
         self.w = chkptw
         self.b = chkptb
-
+        accuracy = np.array(accuracy)
+        error = 1 - accuracy
+        plt.style.use('seaborn')
+        plt.plot(error)
+        plt.xlabel('# of epochs')
+        plt.ylabel('Error rate')
+        plt.show()
         print("Max Accuracy, At Epoch #")
         print(max_accuracy,j)
+        # print(accuracy)
         #print(accuracy.values())
-        plt.plot(list(accuracy.values()))
+        plt.plot(accuracy)
         plt.xlabel("epoch #")
         plt.ylabel("accuracy")
         plt.ylim([0, 1])
