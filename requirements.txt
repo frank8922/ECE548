@@ -1,0 +1,6 @@
+jupyterlab
+matplotlib
+pandas
+numpy
+sklearn
+imbalanced-learn
